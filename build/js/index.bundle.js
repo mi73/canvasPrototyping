@@ -9742,6 +9742,7 @@ var Pattern2 = function () {
   }, {
     key: 'reset',
     value: function reset() {
+      clearInterval(this.timer);
       this.video.pause();
     }
   }, {

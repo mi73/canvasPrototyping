@@ -33,6 +33,7 @@ export default class Pattern2 {
   }
 
   reset() {
+    clearInterval(this.timer);
     this.video.pause();
   }
 
