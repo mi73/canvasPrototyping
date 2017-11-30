@@ -1,0 +1,20 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 35px 35px 55px 35px;
+
+  &--name {
+    float: left;
+    .role {
+      font-size: 13px;
+    }
+    .name {
+      font-size: 21px;
+    }
+  }
+}
+
+
+@media (min-width:800px) {}
+
