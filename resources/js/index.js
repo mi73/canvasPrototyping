@@ -7,7 +7,10 @@ import Pattern3 from './modules/Pattern3';
 import Pattern4 from './modules/Pattern4';
 import Pattern5 from './modules/Pattern5';
 import Pattern6 from './modules/Pattern6';
+<<<<<<< HEAD
 import Pattern7 from './modules/Pattern7';
+=======
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
 
 /**
  * Main Script of bmw new x3 series.
@@ -24,8 +27,12 @@ class Index {
       new Pattern3(this.context),
       new Pattern4(this.context),
       new Pattern5(this.context),
+<<<<<<< HEAD
       new Pattern6(this.context, this.canvas),
       new Pattern7(this.context, this.canvas),
+=======
+      new Pattern6(this.context),
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
     ];
     this.index = this.patterns.length - 1;
 
@@ -36,6 +43,10 @@ class Index {
     this.minB = 70;
     this.maxB = 100;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
     this.param1 = 0.5;
     this.param2 = 0.5;
     this.param3 = 0.5;
@@ -85,7 +96,11 @@ class Index {
           label: 'blendingMode',
           target: 'blending',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
 
@@ -97,44 +112,72 @@ class Index {
           label: 'backgroundColor',
           colorMode: 'hex',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
 
         .addSlider(this, 'minH', 'range360', {
           label: 'Minimum Hue',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'maxH', 'range360', {
           label: 'Max Hue',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'minS', 'range100', {
           label: 'Minimum Saturation',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'maxS', 'range100', {
           label: 'Max Saturation',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'minB', 'range100', {
           label: 'Minimum Brightness',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'maxB', 'range100', {
           label: 'Max Brightness',
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
 
@@ -144,32 +187,56 @@ class Index {
 
         .addSlider(this, 'param1', 'range1', {
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'param2', 'range1', {
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'param3', 'range1', {
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'param4', 'range1', {
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'param5', 'range1', {
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         })
         .addSlider(this, 'param6', 'range1', {
           onChange: () => {
+<<<<<<< HEAD
             this.update();
+=======
+            this.draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
           },
         });
 
@@ -183,6 +250,7 @@ class Index {
       pattern.reset();
     });
 
+<<<<<<< HEAD
     const pattern = this.patterns[this.index];
     pattern.setOption(this);
     pattern.draw();
@@ -193,6 +261,10 @@ class Index {
     const pattern = this.patterns[this.index];
     pattern.setOption(this);
     pattern.update ? pattern.update() : pattern.draw();
+=======
+    this.patterns[this.index].setOption(this);
+    this.patterns[this.index].draw();
+>>>>>>> f487ab253fa22767cf7f49de26f22997052b9cbb
   }
 
 }

@@ -109,6 +109,7 @@ export default class Pattern6 {
       0, 0, 0, 1, 0
     ];
 
+
     const texture = PIXI.Texture.fromVideo(this.video);
     const videoSprite = new PIXI.Sprite(texture);
 
