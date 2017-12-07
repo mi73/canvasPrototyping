@@ -4,41 +4,15 @@ import _ from 'underscore';
 import colr from 'colr';
 import SimplexNoise from 'simplex-noise';
 import * as PIXI from 'pixi.js';
+import TvFilter from './filters/TvFilter';
+import GlitchFilter from './filters/GlitchFilter';
 
-const simplex = new SimplexNoise(Math.random);
 
 console.log(PIXI);
 
 /**
  * http://pixijs.io/pixi-filters/tools/demo/
  */
-
-PIXI.filters.TvFilter = class TvFilter extends PIXI.Filter {
-  constructor() {
-    const fragmentSrc = `
-      precision mediump float;
-      varying vec2 vTextureCoord;
-      uniform sampler2D uSampler;
-      varying vec4 vColor;
-
-      uniform float time;
-
-      void main(void) {
-        vec2 cord = vTextureCoord;
-        vec4 color = texture2D(uSampler, cord);
-        float scanLineInterval = 1300.0;
-        float scanLineSpeed = time * 5.0;
-        float scanLine = max(1.0, sin(vTextureCoord.y * scanLineInterval + scanLineSpeed) * 2.0) * 1.5;
-        color.rgb *= scanLine;
-        gl_FragColor = color;
-      }
-    `;
-
-    super(
-      null, fragmentSrc, {}
-    );
-  }
-};
 
 export default class Pattern6 {
   constructor(context, canvas) {
@@ -47,6 +21,9 @@ export default class Pattern6 {
     this.video = document.createElement("video");
 
     this.initialize();
+
+    PIXI.filters.TvFilter = TvFilter;
+    PIXI.filters.gFilter = GlitchFilter;
 
     this.app = new PIXI.Application(750, 750, {transparent: true});
     document.querySelector('.box').appendChild(this.app.view);
@@ -86,6 +63,7 @@ export default class Pattern6 {
     this.tvFilter.uniforms.time = 1.0;
 
     this.blurFilter = new PIXI.filters.BlurFilter();
+    this.gFilter = new PIXI.filters.gFilter();
 
     this.redChannelFilter = new PIXI.filters.ColorMatrixFilter();
     this.redChannelFilter.matrix = [
@@ -117,8 +95,8 @@ export default class Pattern6 {
     videoSprite.height = this.app.renderer.height;
 
     this.app.stage.addChild(videoSprite);
-    this.app.stage.filters = [this.tvFilter];
-    //this.app.stage.filters = [this.tvFilter, this.mouseFilter];
+    //this.app.stage.filters = [this.tvFilter];
+    this.app.stage.filters = [this.gFilter, this.tvFilter];
 
 
     setInterval(() => {
@@ -127,6 +105,15 @@ export default class Pattern6 {
 
     this.app.ticker.add((delta) => {
       this.tvFilter.uniforms.time += this.param1 * 1000 / 60;
+      this.gFilter.uniforms[ 'amount' ] = Math.random() / 50 * this.param1;
+      this.gFilter.uniforms[ 'angle' ] = Math.random() * this.param2 * Math.PI - Math.PI;
+      this.gFilter.uniforms[ 'distortion_x' ] = Math.random() * this.param3;
+      this.gFilter.uniforms[ 'distortion_y' ] = Math.random() * this.param4;
+      this.gFilter.uniforms[ 'seed' ] = Math.random() * this.param5;
+      this.gFilter.uniforms[ 'seed_x' ] = 0;
+      this.gFilter.uniforms[ 'seed_y' ] = Math.random() * 3 - 0.3;
+      this.gFilter.uniforms['byp'] = this.param6;
+
     });
   }
 

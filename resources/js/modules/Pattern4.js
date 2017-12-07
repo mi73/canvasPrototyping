@@ -20,7 +20,7 @@ export default class Pattern4 {
   }
 
   setOption(option) {
-    this.option = option;
+    this.option = option;r
     Array.from(this.optionKey, (key) => {
       this[key] = option[key];
     });

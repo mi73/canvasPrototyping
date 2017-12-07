@@ -24,11 +24,14 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader?presets[]=es2015'
-    }],
+    },
+      {test: /\.(glsl|frag|vert)$/, loader: 'raw-loader', exclude: /node_modules/},
+      {test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader', exclude: /node_modules/},
+    ],
   },
   devtool: 'source-map',
   plugins: [
-    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
+    new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'}),
     // new UglifyJsPlugin({
     //       compress: {
     //         warnings: false
